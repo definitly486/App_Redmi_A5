@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="256"
+    android:viewportHeight="256">
+
+    <!-- Фон круга -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M128,0C57.3,0,0,57.3,0,128s57.3,128,128,128s128-57.3,128-57.3S198.7,0,128,0z" />
+
+    <!-- Синяя часть "G" -->
+    <path
+        android:fillColor="#0099FF"
+        android:pathData="M88,64c-35.3,0-64,28.7-64,64s28.7,64,64,64v-32c-17.7,0-32-14.3-32-32s14.3-32,32-32h48v-32H88z" />
+
+    <!-- Зелёная часть "G" (внутренний квадратик) -->
+    <path
+        android:fillColor="#00CC99"
+        android:pathData="M120,96h16v16h-16z" />
+
+    <!-- Текст "Gate.io" (упрощённо, как в оригинале) -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M160,104h8v48h-8z" /> <!-- G -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M176,104h8v48h-8z" /> <!-- a -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M192,104h8v48h-8z" /> <!-- t -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M208,104h8v48h-8z" /> <!-- e -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M160,160h8v8h-8z" /> <!-- . -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M176,160h8v8h-8z" /> <!-- i -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M192,160h8v8h-8z" /> <!-- o -->
+
+</vector>

@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Оборачиваем LinearLayout внутрь ScrollView -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp">
+
+        <LinearLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context=".MainActivity"
+            tools:ignore="ExtraText,UselessParent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installtermos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/install_termos"
+                app:icon="@drawable/ic_termos"
+                app:iconGravity="start"
+                app:iconPadding="8dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button"
+                tools:ignore="UsingOnClickInXml,VisualLintButtonSize" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installtermosplus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installtermoplus"
+                app:icon="@drawable/ic_termplus"
+                app:iconGravity="start"
+                app:iconPadding="8dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button"
+                tools:ignore="UsingOnClickInXml,VisualLintButtonSize" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installfm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installfm"
+                app:icon="@drawable/ic_fm"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installaurora"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installaurora"
+                app:icon="@drawable/ic_shopping_basket"
+                app:iconGravity="start"
+                app:iconPadding="8dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button"
+                tools:ignore="UsingOnClickInXml,VisualLintButtonSize" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installnewpipe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installnewpipe"
+                app:icon="@drawable/ic_newpipe"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installjob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installjob"
+                app:icon="@drawable/ic_job"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installtc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installtc"
+                app:icon="@drawable/ic_tc"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installozonbank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installozonbank"
+                app:icon="@drawable/ic_ozonbank"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installsberbank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installsberbank"
+                app:icon="@drawable/ic_sberbank"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installtelegram"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installtelegram"
+                app:icon="@drawable/ic_telegram"
+                app:iconGravity="start"
+                app:iconPadding="8dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button"
+                tools:ignore="UsingOnClickInXml,VisualLintButtonSize" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installgnucash"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installgnucash"
+                android:textColor="@android:color/white"
+                app:icon="@drawable/ic_gnucash"
+                app:iconGravity="start"
+                app:iconPadding="8dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button"
+                tools:ignore="UsingOnClickInXml,VisualLintButtonSize" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installkeychain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installkeychain"
+                app:icon="@drawable/ic_key"
+                app:iconGravity="start"
+                app:iconPadding="8dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button"
+                tools:ignore="UsingOnClickInXml,VisualLintButtonSize" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installdpi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installdpi"
+                app:icon="@drawable/ic_bye"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installsports"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installsports"
+                app:icon="@drawable/ic_sports"
+                app:iconGravity="start"
+                app:iconPadding="8dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button"
+                tools:ignore="UsingOnClickInXml,VisualLintButtonSize" />
+
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installtelegramx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installtelegramx"
+                app:icon="@drawable/ic_telegramx"
+                app:iconGravity="start"
+                app:iconPadding="8dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button"
+                tools:ignore="UsingOnClickInXml,VisualLintButtonSize" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installhacker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installhacker"
+                app:icon="@drawable/ic_hacker"
+                app:iconGravity="start"
+                app:iconPadding="8dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button"
+                tools:ignore="UsingOnClickInXml,VisualLintButtonSize" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installzepp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installzepp"
+                app:icon="@drawable/ic_zepp"
+                app:iconGravity="start"
+                app:iconPadding="8dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button"
+                tools:ignore="UsingOnClickInXml,VisualLintButtonSize" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installmpv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installmpv"
+                app:icon="@drawable/ic_mpv"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installray"
+                app:icon="@drawable/ic_v2ray"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installkernelsu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installkernelsu"
+                app:icon="@drawable/ic_kernelsu"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installapatch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/apatch"
+                app:icon="@drawable/ic_apatch"
+                app:iconGravity="start"
+                app:iconPadding="8dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button"
+                tools:ignore="UsingOnClickInXml,VisualLintButtonSize" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installcore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installcore"
+                app:icon="@drawable/ic_coreplayer"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installpluma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installpluma"
+                app:icon="@drawable/ic_pluma"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/install3с"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/install3с"
+                app:icon="@drawable/ic_3c"
+                app:iconGravity="start"
+                app:iconPadding="8dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button"
+                tools:ignore="UsingOnClickInXml,VisualLintButtonSize" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installk9mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installk9mail"
+                app:icon="@drawable/ic_k9"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installgoogleauth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installgoogleauth"
+                app:icon="@drawable/ic_googleauth"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installyandexmap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installyandexmap"
+                app:icon="@drawable/ic_yandexmap"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installfdroid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installfdroid"
+                app:icon="@drawable/ic_fdroid"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installvcore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installvcore"
+                app:icon="@drawable/ic_download"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installelektichka"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installelektichka"
+                app:icon="@drawable/ic_elektrichka"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

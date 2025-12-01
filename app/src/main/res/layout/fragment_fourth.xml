@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Заголовок -->
+    <TextView
+        android:id="@+id/headerTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Расшифровка только текстовых файлов"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/buttonSelectFile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Выбрать файл"
+        tools:ignore="HardcodedText,VisualLintButtonSize" />
+
+    <TextView
+        android:id="@+id/fileNameLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Файл не выбран"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/passwordInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите пароль"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
+
+    <Button
+        android:id="@+id/buttonDecrypt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Расшифровать"
+        tools:ignore="HardcodedText,VisualLintButtonSize" />
+
+    <Button
+        android:id="@+id/buttonSaveInternal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Расшифровать и сохранить"
+        tools:ignore="HardcodedText,VisualLintButtonSize" />
+
+    <TextView
+        android:id="@+id/outputData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Результат появится здесь"
+        tools:ignore="HardcodedText" />
+
+</LinearLayout>

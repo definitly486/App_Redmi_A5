@@ -1,0 +1,4 @@
+/build
+.gradle/*
+.idea/*
+/app/src/main/assets/KernelSU_v1.0.5_12081-release.apk

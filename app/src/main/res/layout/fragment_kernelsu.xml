@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="16dp"
+        tools:context=".MainActivity">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/downloadksuzip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/downloadksuzip"
+            app:icon="@drawable/ic_download"
+            app:iconGravity="start"
+            app:iconPadding="12dp"
+            app:iconTint="@null"
+            android:backgroundTint="?attr/colorPrimary"
+            style="@style/Widget.MaterialComponents.Button"
+            tools:ignore="VisualLintButtonSize" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/install_apatch_ksu_zip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/kernelsetup"
+            app:icon="@drawable/ic_download"
+            app:iconGravity="start"
+            app:iconPadding="12dp"
+            app:iconTint="@null"
+            android:backgroundTint="?attr/colorPrimary"
+            style="@style/Widget.MaterialComponents.Button"
+            tools:ignore="VisualLintButtonSize" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/install_kermelsu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/install_kermelsu"
+            app:icon="@drawable/ic_download"
+            app:iconGravity="start"
+            app:iconPadding="12dp"
+            app:iconTint="@null"
+            android:backgroundTint="?attr/colorPrimary"
+            style="@style/Widget.MaterialComponents.Button"
+            tools:ignore="VisualLintButtonSize" />
+
+
+    </LinearLayout>
+</FrameLayout>

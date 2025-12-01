@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Синий круглый фон (официальный цвет Telegram) -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#0088CC" />
+            <size android:width="24dp" android:height="24dp" />
+        </shape>
+    </item>
+
+    <!-- Белый самолётик (центрирован) -->
+    <item
+        android:width="14dp"
+        android:height="14dp"
+        android:gravity="center">
+        <vector
+            android:width="14dp"
+            android:height="14dp"
+            android:viewportWidth="14"
+            android:viewportHeight="14">
+            <path
+                android:fillColor="#FFFFFF"
+                android:pathData="M13.5,1.5L0.5,6.5L5,8.5L10.5,3.5L6.5,8.5L6.5,12.5L9,10.5L11.5,12.5L13.5,1.5Z" />
+        </vector>
+    </item>
+
+</layer-list>

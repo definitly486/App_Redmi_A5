@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="16dp"
+        tools:context=".MainActivity">
+
+        <!-- Кнопка 1: Скачать Gate.io -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/download_gate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/download_gate"
+            app:icon="@drawable/ic_gate_io"
+            app:iconGravity="start"
+            app:iconPadding="12dp"
+            app:iconTint="@null"
+            android:backgroundTint="?attr/colorPrimary"
+            style="@style/Widget.MaterialComponents.Button" />
+
+        <!-- Кнопка 2: Установить Gate.io -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/installgate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/installgate"
+            app:icon="@drawable/ic_gate"
+            app:iconGravity="start"
+            app:iconPadding="12dp"
+            app:iconTint="@null"
+            android:backgroundTint="?attr/colorPrimary"
+            style="@style/Widget.MaterialComponents.Button" />
+
+        <!-- Кнопка 3: Установить Binance (можно без иконки или с другой) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/installbinance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/installbinance"
+            app:icon="@drawable/ic_binance"
+            app:iconGravity="start"
+            app:iconPadding="12dp"
+            app:iconTint="@null"
+            android:backgroundTint="?attr/colorPrimary"
+            style="@style/Widget.MaterialComponents.Button" />
+
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Красный круглый фон -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#DD0000" />
+            <size
+                android:width="24dp"
+                android:height="24dp" />
+        </shape>
+    </item>
+
+    <!-- Белая стрелка воспроизведения (центрирована) -->
+    <item
+        android:width="10dp"
+        android:height="14dp"
+        android:gravity="center">
+        <vector
+            android:width="10dp"
+            android:height="14dp"
+            android:viewportWidth="10"
+            android:viewportHeight="14">
+            <path
+                android:fillColor="#FFFFFF"
+                android:pathData="M0,0v14l10,-7z" />
+        </vector>
+    </item>
+
+</layer-list>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp">
+
+    <!-- Твои существующие CheckBox и TextView (оставляем как есть) -->
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Устройство имеет root доступ"
+        android:textColor="@color/black"
+        android:enabled="false"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.35" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="Запись в /system возможна!"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/checkBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/buildTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loading"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/checkBox2"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="32dp" />
+
+    <TextView
+        android:id="@+id/versionNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Версия приложения: загружается..."
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/buildTimeText"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/branchText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ветка Git: неизвестно"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/versionNameText"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- НОВАЯ СТРОКА: номер (хэш) коммита -->
+    <TextView
+        android:id="@+id/commitHashText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Коммит: неизвестно"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/branchText"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- КРАСИВАЯ КНОПКА СБРОСА -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFactoryReset"
+        android:layout_width="0dp"
+        android:layout_height="68dp"
+        android:text="СБРОСИТЬ ВСЁ НА ТЕЛЕФОНЕ"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:letterSpacing="0.05"
+
+        app:cornerRadius="18dp"
+        app:strokeWidth="4dp"
+        app:strokeColor="#FF3B30"
+        android:backgroundTint="#FF3B30"
+
+        app:icon="@android:drawable/ic_delete"
+        app:iconGravity="start"
+        app:iconPadding="16dp"
+        app:iconTint="#FFFFFF"
+
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="56dp"
+        app:layout_constraintTop_toBottomOf="@id/commitHashText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
