@@ -84,5 +84,6 @@
     <string name="kernelsetup">Установить  APatch-KSU.zip</string>
     <string name="install_kermelsu">Установка KernelSU </string>
     <string name="messageDecrypt">Расшифровать сообщение </string>
+    <string name="enter_message">Введите сообщение или фразу </string>
 
 </resources>

@@ -55,6 +55,18 @@
             android:inputType="textPassword"
             android:minHeight="48dp" />
 
+        <EditText
+            android:id="@+id/etMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:autofillHints=""
+            android:hint="@string/enter_message"
+            android:textColor="@android:color/black"
+            android:inputType="textPassword"
+            android:minHeight="48dp" />
+
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDecrypt"
             android:layout_width="match_parent"
