@@ -68,6 +68,19 @@
             style="@style/Widget.MaterialComponents.Button"
             tools:ignore="UsingOnClickInXml,VisualLintButtonSize" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/messageDecrypt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/messageDecrypt"
+            app:icon="@drawable/ic_decrypt"
+            app:iconGravity="start"
+            app:iconPadding="8dp"
+            app:iconTint="@null"
+            android:backgroundTint="?attr/colorPrimary"
+            style="@style/Widget.MaterialComponents.Button"
+            tools:ignore="UsingOnClickInXml,VisualLintButtonSize" />
+
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
