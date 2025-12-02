@@ -76,37 +76,30 @@ class NinthFragment : Fragment() {
 
 
     private fun decryptMessage() {
-        val encryptedText = etMessage.text.toString().trim()
-        val password = etPassword.text.toString().trim()
+        val encryptedText = etMessage.text.toString()
+        val password = etPassword.text.toString()
 
-        if (encryptedText.isEmpty()) {
-            Toast.makeText(requireContext(), "Введи зашифрованный текст", Toast.LENGTH_SHORT).show()
-            return
-        }
-        if (password.isEmpty()) {
-            Toast.makeText(requireContext(), "Введи пароль", Toast.LENGTH_SHORT).show()
+        if (encryptedText.isEmpty() || password.isEmpty()) {
+            Toast.makeText(requireContext(), "Заполни поля", Toast.LENGTH_SHORT).show()
             return
         }
 
         progressBar.visibility = View.VISIBLE
-        tvStatus.text = "Расшифровываю сообщение..."
+        tvStatus.text = "Расшифровываю..."
 
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             try {
                 val decrypted = opensslAes256CbcDecryptString(encryptedText, password)
                 withContext(Dispatchers.Main) {
                     progressBar.visibility = View.GONE
-                    tvStatus.text = "Расшифровано успешно!"
-                    // Выводим результат — можно в отдельное поле или диалог
-                     tvDecryptedMessage.text = decrypted
-                    etMessage.setText(decrypted) // или выведи в новое поле
-                    Toast.makeText(requireContext(), "Успешно расшифровано!", Toast.LENGTH_LONG).show()
+                    tvStatus.text = "Успешно!"
+                    tvDecryptedMessage.text = decrypted
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     progressBar.visibility = View.GONE
-                    tvStatus.text = "Ошибка: неверный пароль или данные"
-                    Toast.makeText(requireContext(), "Ошибка: ${e.message}", Toast.LENGTH_LONG).show()
+                    tvStatus.text = "Неверный пароль или данные"
+                    tvDecryptedMessage.text = ""
                 }
             }
         }
@@ -276,12 +269,9 @@ class NinthFragment : Fragment() {
         override fun afterTextChanged(s: android.text.Editable?) {}
     }
 
-    private fun opensslAes256CbcDecryptString(
-        encryptedBase64: String,
-        password: String
-    ): String {
-        // Используем android.util.Base64 — работает на всех версиях Android
-        val data = android.util.Base64.decode(encryptedBase64, android.util.Base64.DEFAULT)
+    // Вставь в NinthFragment — это окончательная версия
+    private fun opensslAes256CbcDecryptString(encryptedBase64: String, password: String): String {
+        val data = android.util.Base64.decode(encryptedBase64.trim(), android.util.Base64.DEFAULT)
 
         if (data.size < 16 || String(data, 0, 8, Charsets.US_ASCII) != "Salted__") {
             throw IllegalArgumentException("Неверный формат OpenSSL")
@@ -294,19 +284,18 @@ class NinthFragment : Fragment() {
         val spec = PBEKeySpec(
             password.toCharArray(),
             salt,
-            1_000_000,      // твой -iter 1000000
-            384             // 32 байта ключ + 16 байт IV
+            1_000_000,      // ←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←
+            384
         )
         val keyMaterial = factory.generateSecret(spec).encoded
 
         val key = keyMaterial.copyOfRange(0, 32)
-        val iv = keyMaterial.copyOfRange(32, 48)
+        val iv  = keyMaterial.copyOfRange(32, 48)
 
         val cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
         cipher.init(Cipher.DECRYPT_MODE, SecretKeySpec(key, "AES"), IvParameterSpec(iv))
-
-        val decryptedBytes = cipher.doFinal(ciphertext)
-        return String(decryptedBytes, Charsets.UTF_8)
+        val result = cipher.doFinal(ciphertext)
+        return String(result, Charsets.UTF_8)
     }
 
 }

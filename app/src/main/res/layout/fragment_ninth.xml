@@ -52,7 +52,7 @@
             android:autofillHints=""
             android:hint="@string/enter_password"
             android:textColor="@android:color/black"
-            android:inputType="textPassword"
+            android:inputType="textVisiblePassword"
             android:minHeight="48dp" />
 
         <EditText
@@ -63,7 +63,7 @@
             android:autofillHints=""
             android:hint="@string/enter_message"
             android:textColor="@android:color/black"
-            android:inputType="textPassword"
+            android:inputType="textVisiblePassword|textMultiLine"
             android:minHeight="48dp" />
 
 
