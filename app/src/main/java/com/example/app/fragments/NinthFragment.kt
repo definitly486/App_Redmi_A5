@@ -25,6 +25,7 @@ import javax.crypto.spec.PBEKeySpec
 import javax.crypto.spec.SecretKeySpec
 import android.content.ContentValues
 import android.provider.MediaStore
+import java.util.Base64
 
 class NinthFragment : Fragment() {
 
@@ -32,6 +33,7 @@ class NinthFragment : Fragment() {
     private lateinit var btnSelectFile: Button
     private lateinit var etPassword: EditText
     private lateinit var btnDecrypt: Button
+    private lateinit var messageDecrypt: Button
     private lateinit var progressBar: ProgressBar
     private lateinit var tvStatus: TextView
 
@@ -55,16 +57,23 @@ class NinthFragment : Fragment() {
         btnDecrypt = view.findViewById(R.id.btnDecrypt)
         progressBar = view.findViewById(R.id.progressBar)
         tvStatus = view.findViewById(R.id.tvStatus)
+        messageDecrypt = view.findViewById(R.id.messageDecrypt)
     }
 
     private fun setupUI() {
         btnSelectFile.setOnClickListener { selectFile() }
         btnDecrypt.setOnClickListener { decryptFile() }
+        messageDecrypt.setOnClickListener { decryptMessage() }
         etPassword.addTextChangedListener(object : SimpleTextWatcher() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 updateDecryptButtonState()
             }
         })
+    }
+
+
+    private fun decryptMessage(){
+
     }
 
     private fun selectFile() {
@@ -230,4 +239,41 @@ class NinthFragment : Fragment() {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
         override fun afterTextChanged(s: android.text.Editable?) {}
     }
+
+    fun opensslAes256CbcDecrypt(
+        encryptedBase64: String,
+        password: String
+    ): String {
+        val data = Base64.getDecoder().decode(encryptedBase64)
+
+        // Проверка магического заголовка OpenSSL
+        if (data.size < 16 || String(data, 0, 8) != "Salted__") {
+            throw IllegalArgumentException("Не распознан формат OpenSSL (нет 'Salted__')")
+        }
+
+        val salt = data.copyOfRange(8, 16)                    // 8 байт соли
+        val ciphertext = data.copyOfRange(16, data.size)      // остальное — шифротекст
+
+        // Генерация ключа и IV через PBKDF2-HMAC-SHA256 (точно как в OpenSSL)
+        val factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256")
+        val keySpec = PBEKeySpec(
+            password.toCharArray(),
+            salt,
+            1_000_000,           // именно то, что ты указал в -iter 1000000
+            256 + 128            // 256 бит ключ + 128 бит IV = 48 байт
+        )
+        val keyMaterial = factory.generateSecret(keySpec).encoded
+
+        val key = keyMaterial.copyOfRange(0, 32)   // первые 32 байта — AES-256 ключ
+        val iv  = keyMaterial.copyOfRange(32, 48)  // следующие 16 байт — IV
+
+        // Расшифровка
+        val cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
+        cipher.init(Cipher.DECRYPT_MODE, SecretKeySpec(key, "AES"), IvParameterSpec(iv))
+
+        val plaintextBytes = cipher.doFinal(ciphertext)
+        return String(plaintextBytes, Charsets.UTF_8)
+    }
+
+
 }
