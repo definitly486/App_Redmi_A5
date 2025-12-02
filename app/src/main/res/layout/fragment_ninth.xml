@@ -80,6 +80,16 @@
             style="@style/Widget.MaterialComponents.Button"
             tools:ignore="UsingOnClickInXml,VisualLintButtonSize" />
 
+        <TextView
+            android:id="@+id/tvDecryptedMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Результат появится здесь..."
+            android:textSize="16sp"
+            android:padding="16dp"
+            android:background="#f0f0f0"
+            android:layout_marginTop="16dp"/>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/messageDecrypt"
             android:layout_width="match_parent"

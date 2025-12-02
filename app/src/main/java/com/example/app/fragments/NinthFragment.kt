@@ -32,11 +32,12 @@ class NinthFragment : Fragment() {
     private lateinit var tvSelectedFile: TextView
     private lateinit var btnSelectFile: Button
     private lateinit var etPassword: EditText
+    private lateinit var etMessage: EditText
     private lateinit var btnDecrypt: Button
     private lateinit var messageDecrypt: Button
     private lateinit var progressBar: ProgressBar
     private lateinit var tvStatus: TextView
-
+    private lateinit var tvDecryptedMessage: TextView
     private var selectedFileUri: Uri? = null
     private var finalOutputUri: Uri? = null // Ссылка на файл в Downloads
 
@@ -58,6 +59,8 @@ class NinthFragment : Fragment() {
         progressBar = view.findViewById(R.id.progressBar)
         tvStatus = view.findViewById(R.id.tvStatus)
         messageDecrypt = view.findViewById(R.id.messageDecrypt)
+        etMessage = view.findViewById(R.id.etMessage)
+        tvDecryptedMessage = view.findViewById(R.id.tvDecryptedMessage)
     }
 
     private fun setupUI() {
@@ -72,8 +75,41 @@ class NinthFragment : Fragment() {
     }
 
 
-    private fun decryptMessage(){
+    private fun decryptMessage() {
+        val encryptedText = etMessage.text.toString().trim()
+        val password = etPassword.text.toString().trim()
 
+        if (encryptedText.isEmpty()) {
+            Toast.makeText(requireContext(), "Введи зашифрованный текст", Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (password.isEmpty()) {
+            Toast.makeText(requireContext(), "Введи пароль", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        progressBar.visibility = View.VISIBLE
+        tvStatus.text = "Расшифровываю сообщение..."
+
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val decrypted = opensslAes256CbcDecryptString(encryptedText, password)
+                withContext(Dispatchers.Main) {
+                    progressBar.visibility = View.GONE
+                    tvStatus.text = "Расшифровано успешно!"
+                    // Выводим результат — можно в отдельное поле или диалог
+                     tvDecryptedMessage.text = decrypted
+                    etMessage.setText(decrypted) // или выведи в новое поле
+                    Toast.makeText(requireContext(), "Успешно расшифровано!", Toast.LENGTH_LONG).show()
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    progressBar.visibility = View.GONE
+                    tvStatus.text = "Ошибка: неверный пароль или данные"
+                    Toast.makeText(requireContext(), "Ошибка: ${e.message}", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
     }
 
     private fun selectFile() {
@@ -240,40 +276,37 @@ class NinthFragment : Fragment() {
         override fun afterTextChanged(s: android.text.Editable?) {}
     }
 
-    fun opensslAes256CbcDecrypt(
+    private fun opensslAes256CbcDecryptString(
         encryptedBase64: String,
         password: String
     ): String {
-        val data = Base64.getDecoder().decode(encryptedBase64)
+        // Используем android.util.Base64 — работает на всех версиях Android
+        val data = android.util.Base64.decode(encryptedBase64, android.util.Base64.DEFAULT)
 
-        // Проверка магического заголовка OpenSSL
-        if (data.size < 16 || String(data, 0, 8) != "Salted__") {
-            throw IllegalArgumentException("Не распознан формат OpenSSL (нет 'Salted__')")
+        if (data.size < 16 || String(data, 0, 8, Charsets.US_ASCII) != "Salted__") {
+            throw IllegalArgumentException("Неверный формат OpenSSL")
         }
 
-        val salt = data.copyOfRange(8, 16)                    // 8 байт соли
-        val ciphertext = data.copyOfRange(16, data.size)      // остальное — шифротекст
+        val salt = data.copyOfRange(8, 16)
+        val ciphertext = data.copyOfRange(16, data.size)
 
-        // Генерация ключа и IV через PBKDF2-HMAC-SHA256 (точно как в OpenSSL)
         val factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256")
-        val keySpec = PBEKeySpec(
+        val spec = PBEKeySpec(
             password.toCharArray(),
             salt,
-            1_000_000,           // именно то, что ты указал в -iter 1000000
-            256 + 128            // 256 бит ключ + 128 бит IV = 48 байт
+            1_000_000,      // твой -iter 1000000
+            384             // 32 байта ключ + 16 байт IV
         )
-        val keyMaterial = factory.generateSecret(keySpec).encoded
+        val keyMaterial = factory.generateSecret(spec).encoded
 
-        val key = keyMaterial.copyOfRange(0, 32)   // первые 32 байта — AES-256 ключ
-        val iv  = keyMaterial.copyOfRange(32, 48)  // следующие 16 байт — IV
+        val key = keyMaterial.copyOfRange(0, 32)
+        val iv = keyMaterial.copyOfRange(32, 48)
 
-        // Расшифровка
         val cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
         cipher.init(Cipher.DECRYPT_MODE, SecretKeySpec(key, "AES"), IvParameterSpec(iv))
 
-        val plaintextBytes = cipher.doFinal(ciphertext)
-        return String(plaintextBytes, Charsets.UTF_8)
+        val decryptedBytes = cipher.doFinal(ciphertext)
+        return String(decryptedBytes, Charsets.UTF_8)
     }
-
 
 }
