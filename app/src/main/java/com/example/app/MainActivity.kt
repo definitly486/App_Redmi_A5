@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     )
 
     private val buttonTitles = listOf(
-        "Первая", "Вторая", "Третья", "Профили", "Git Clone", "Седьмая" ,"Восьмая","Десятая","Python3","KernelSu"
+        "Первая", "Вторая", "Третья", "Профили", "Git Clone", "Седьмая" ,"OpenSSL Decryptor","Десятая","Python3","KernelSu"
     )
 
     private var selectedButton: Button? = null
