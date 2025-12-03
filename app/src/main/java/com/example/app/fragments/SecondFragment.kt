@@ -28,9 +28,12 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
-
+import android.app.WallpaperManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import java.io.DataOutputStream
 import java.io.File
+import java.io.IOException
 
 
 @Suppress("DEPRECATION")
@@ -119,6 +122,10 @@ class SecondFragment : Fragment() {
         val installAutoApk = view.findViewById<Button>(R.id.installautoapk)
         installAutoApk .setOnClickListener { installAutoAPK(requireContext()) }
 
+        // Кнопка установки обоев
+        val setWallaper = view.findViewById<Button>(R.id.setwallpaper)
+        setWallaper.setOnClickListener { SetWallpaper() }
+
     }
 
     private fun downloadBusyBox() {
@@ -200,6 +207,14 @@ class SecondFragment : Fragment() {
         }
     }
 
+    private fun SetWallpaper (){
+        val imagePath = "/sdcard/black_image.png" // Укажите путь к изображению
+
+        setWallpaper(imagePath)
+
+    }
+
+
     suspend fun launchLoadSequence() {
         val urls = listOf(
             "https://github.com/definitly486/redmia5/releases/download/apk/Total_Commander_v.3.50d.apk",
@@ -243,6 +258,20 @@ class SecondFragment : Fragment() {
     private fun downloadMain() {
         downloadHelper.downloadFileSimple("https://github.com/definitly486/redmia5/archive/main.tar.gz")
     }
+
+    private fun setWallpaper(imagePath: String) {
+        try {
+            val wallpaperManager = WallpaperManager.getInstance(requireContext())
+            val bitmap: Bitmap = BitmapFactory.decodeFile(imagePath)
+
+            // Устанавливаем обои на главный экран
+            wallpaperManager.setBitmap(bitmap)
+
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
 
     private fun installAPK() {
         val urls = listOf(
