@@ -3,6 +3,7 @@
 package com.example.app.fragments
 
 import DownloadHelper
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
@@ -31,6 +32,7 @@ import kotlinx.coroutines.withContext
 import android.app.WallpaperManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import androidx.core.content.ContextCompat
 import java.io.DataOutputStream
 import java.io.File
 import java.io.IOException
@@ -260,18 +262,73 @@ class SecondFragment : Fragment() {
     }
 
     private fun setWallpaper(imagePath: String) {
-        try {
-            val wallpaperManager = WallpaperManager.getInstance(requireContext())
-            val bitmap: Bitmap = BitmapFactory.decodeFile(imagePath)
+        val tag = "WallpaperService"
 
-            // Устанавливаем обои на главный экран
+        try {
+            val file = File(imagePath)
+
+            // Log the file details
+            Log.d(tag, "Image Path: $imagePath")
+            Log.d(tag, "File exists: ${file.exists()} and is readable: ${file.canRead()}")
+
+            if (!file.exists()) {
+                Log.e(tag, "File does not exist at $imagePath")
+                return
+            }
+
+            // Optional: Check permissions if needed
+            if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+                Log.e(tag, "Permission to read external storage is not granted.")
+                return
+            }
+
+            // Decode the image with options for larger images
+            val options = BitmapFactory.Options()
+            options.inJustDecodeBounds = true
+            BitmapFactory.decodeFile(imagePath, options)
+
+            // Calculate inSampleSize if needed
+            val sampleSize = calculateInSampleSize(options, 100, 100)
+            options.inSampleSize = sampleSize
+            options.inJustDecodeBounds = false
+
+            val bitmap: Bitmap? = BitmapFactory.decodeFile(imagePath, options)
+
+            if (bitmap == null) {
+                Log.e(tag, "Failed to decode bitmap from $imagePath. The file might be corrupted or in an unsupported format.")
+                return
+            }
+
+            val wallpaperManager = WallpaperManager.getInstance(requireContext())
             wallpaperManager.setBitmap(bitmap)
 
+            Log.i(tag, "Wallpaper set successfully")
         } catch (e: IOException) {
+            Log.e(tag, "IOException while setting wallpaper: ${e.message}")
+            e.printStackTrace()
+        } catch (e: Exception) {
+            Log.e(tag, "Unexpected error while setting wallpaper: ${e.message}")
             e.printStackTrace()
         }
     }
 
+    fun calculateInSampleSize(options: BitmapFactory.Options, reqWidth: Int, reqHeight: Int): Int {
+        val height = options.outHeight
+        val width = options.outWidth
+        var inSampleSize = 1
+
+        if (height > reqHeight || width > reqWidth) {
+            val halfHeight = height / 2
+            val halfWidth = width / 2
+
+            while ((halfHeight / inSampleSize) >= reqHeight && (halfWidth / inSampleSize) >= reqWidth) {
+                inSampleSize *= 2
+            }
+        }
+
+        return inSampleSize
+    }
 
     private fun installAPK() {
         val urls = listOf(
