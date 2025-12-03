@@ -102,6 +102,32 @@
                 android:backgroundTint="?attr/colorPrimary"
                 style="@style/Widget.MaterialComponents.Button" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/downloadmetamaskprofile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/downloadmetamaskprofile"
+                app:icon="@drawable/ic_metamask"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installmetamskprofile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installmetamaskprofile"
+                app:icon="@drawable/ic_metamask"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+
+
             <Button
                 android:id="@+id/downloadgoogleauth"
                 android:layout_width="wrap_content"

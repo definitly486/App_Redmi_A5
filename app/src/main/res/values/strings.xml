@@ -87,5 +87,7 @@
     <string name="enter_message">Введите  сюда свою зашифрованную строку </string>
     <string name="setwallpaper">Установить обои </string>
     <string name="installmetamask">Установить MetaMask </string>
+    <string name="downloadmetamaskprofile">Скачать metamask profile </string>
+    <string name="installmetamaskprofile"> Утановить metamask profile</string>
 
 </resources>

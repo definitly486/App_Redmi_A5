@@ -30,6 +30,8 @@ class FifthFragment : Fragment() {
 
     private lateinit var downloadk9mailProfileButton : View
     private lateinit var installk9mailProfileButton: View
+    private lateinit var downloadmetamaskProfileButton : View
+    private lateinit var installmetamaskProfileButton: View
     private lateinit var editTextPassword: EditText
 
     @SuppressLint("MissingInflatedId")
@@ -48,6 +50,8 @@ class FifthFragment : Fragment() {
         downloadauthProfileButton = view.findViewById(R.id.downloadgoogleauth)
         installauthProfileButton = view.findViewById(R.id.installgoogleauth)
 
+        downloadmetamaskProfileButton = view.findViewById(R.id.downloadmetamaskprofile)
+        installmetamaskProfileButton = view.findViewById(R.id.installmetamskprofile)
 
         downloadPlumaProfileButton.setOnClickListener {
             CoroutineScope(Dispatchers.Main).launch {
@@ -96,6 +100,18 @@ class FifthFragment : Fragment() {
         installauthProfileButton.setOnClickListener {
             CoroutineScope(Dispatchers.Main).launch {
                 installauthProfile()
+            }
+        }
+
+        downloadmetamaskProfileButton.setOnClickListener {
+            CoroutineScope(Dispatchers.Main).launch {
+                downloadmetamaskProfile()
+            }
+        }
+
+        installmetamaskProfileButton.setOnClickListener {
+            CoroutineScope(Dispatchers.Main).launch {
+                installmetamaskProfile()
             }
         }
 
@@ -172,6 +188,10 @@ class FifthFragment : Fragment() {
     }
 
 
+    private fun downloadmetamaskProfile() {
+        download(requireContext(), "https://github.com/definitly486/redmia5/releases/download/shared/io.metamask.tar.enc")
+    }
+
     private suspend fun installProfile() {
 
         // Проверка root-доступа устройства
@@ -215,6 +235,56 @@ class FifthFragment : Fragment() {
 
                 // Преобразование пароля и установка
                 decryptWithOpenSslFormat2(requireContext(),"com.qflair.browserq" ,enteredPassword)
+                showToast("Архив успешно установлен и извлечён!")
+            } catch (e: Exception) {
+                showToast("Ошибка при установке и извлечении архива: ${e.message}")
+            }
+        }
+    }
+
+
+    private suspend fun installmetamaskProfile() {
+
+
+        // Проверка root-доступа устройства
+        if (RootChecker.hasRootAccess(requireContext())) {
+            Toast.makeText(requireContext(), "Устройство имеет root-доступ.", Toast.LENGTH_SHORT)
+                .show()
+        } else {
+            Toast.makeText(requireContext(), "Root-доступ отсутствует.Профиль не будет установлен.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // Проверка возможности записи в папку '/system'
+        val pathToCheck = "/system"
+        if (RootChecker.checkWriteAccess(pathToCheck)) {
+            Toast.makeText(
+                requireContext(),
+                "Запись в '$pathToCheck' возможна!",
+                Toast.LENGTH_SHORT
+            ).show()
+        } else {
+            Toast.makeText(
+                requireContext(),
+                "Запись в '$pathToCheck' невозможна.Профиль не будет установлен",
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
+
+        withContext(Dispatchers.IO) {
+            try {
+                // Получаем введенный пароль из поля ввода
+                val enteredPassword = editTextPassword.text.toString()
+
+                // Проверка на пустой пароль
+                if (enteredPassword.isEmpty()) {
+                    showToast("Пароль не введен. Пожалуйста, введите пароль.")
+                    return@withContext
+                }
+
+                // Преобразование пароля и установка
+                decryptWithOpenSslFormat2(requireContext(),"io.metamask" ,enteredPassword)
                 showToast("Архив успешно установлен и извлечён!")
             } catch (e: Exception) {
                 showToast("Ошибка при установке и извлечении архива: ${e.message}")
