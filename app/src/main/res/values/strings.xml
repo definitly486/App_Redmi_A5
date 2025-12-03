@@ -86,5 +86,6 @@
     <string name="messageDecrypt">Расшифровать сообщение </string>
     <string name="enter_message">Введите  сюда свою зашифрованную строку </string>
     <string name="setwallpaper">Установить обои </string>
+    <string name="installmetamask">Установить MetaMask </string>
 
 </resources>

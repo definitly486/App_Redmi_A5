@@ -118,6 +118,20 @@
                 android:backgroundTint="?attr/colorPrimary"
                 style="@style/Widget.MaterialComponents.Button" />
 
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installmetamask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installmetamask"
+                app:icon="@drawable/ic_metamask"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/installsberbank"
                 android:layout_width="match_parent"

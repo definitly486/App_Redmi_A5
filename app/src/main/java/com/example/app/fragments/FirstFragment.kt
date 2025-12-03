@@ -59,6 +59,8 @@ class FirstFragment : Fragment() {
             R.id.installyandexmap to "https://github.com/definitly486/Lenovo_Tab_3_7_TB3-730X/releases/download/apk/Yandex_Maps_17.2.0.apk",
             R.id.installfdroid to "https://github.com/definitly486/redmia5/releases/download/apk/org.fdroid.fdroid_1018050.apk",
             R.id.installvcore to "https://github.com/definitly486/redmia5/releases/download/apk/vcore.apk",
+            R.id.installmetamask to "https://github.com/definitly486/redmia5/releases/download/apk/metamask-blockchain-wall-android3-7.60.2-metamask-main-prod-3213.apk",
+
             R.id.installelektichka to "https://github.com/definitly486/Lenovo_Tab_3_7_TB3-730X/releases/download/apk/yandex_elektrichka+v.3.43.0-34300_arm64.apk"
         )
 
