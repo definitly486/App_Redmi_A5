@@ -210,8 +210,9 @@ class SecondFragment : Fragment() {
     }
 
     private fun SetWallpaper (){
-        val imagePath = "/sdcard/black_image.png" // Укажите путь к изображению
 
+        val externalFilesDir = context?.getExternalFilesDir(null)
+        val imagePath = File(externalFilesDir, "black_image.png").absolutePath
         setWallpaper(imagePath)
 
     }
@@ -276,12 +277,7 @@ class SecondFragment : Fragment() {
                 return
             }
 
-            // Optional: Check permissions if needed
-            if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-                Log.e(tag, "Permission to read external storage is not granted.")
-                return
-            }
+
 
             // Decode the image with options for larger images
             val options = BitmapFactory.Options()
