@@ -32,10 +32,13 @@ import kotlinx.coroutines.withContext
 import android.app.WallpaperManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import androidx.core.content.ContextCompat
 import java.io.DataOutputStream
 import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
+
+import android.graphics.Canvas
+import android.graphics.Color
 
 
 @Suppress("DEPRECATION")
@@ -217,6 +220,45 @@ class SecondFragment : Fragment() {
 
     }
 
+    fun createBlackPngInExternalFiles(
+        context: Context,
+        width: Int,
+        height: Int,
+        fileName: String
+    ): File? {
+        // Получаем путь: /storage/emulated/0/Android/data/ваш.пакет/files/
+        val externalFilesDir = context.getExternalFilesDir(null)
+            ?: return null
+
+        val targetFile = File(externalFilesDir, fileName).apply {
+            parentFile?.mkdirs() // создаём подпапки, если нужно
+        }
+
+        var bitmap: Bitmap? = null
+        var fos: FileOutputStream? = null
+
+        try {
+            // Создаём bitmap и заливаем чёрным
+            bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+            val canvas = Canvas(bitmap)
+            canvas.drawColor(Color.BLACK)
+
+            // Сохраняем как PNG
+            fos = FileOutputStream(targetFile)
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos)
+            fos.flush()
+
+            println("Чёрный PNG успешно создан: ${targetFile.absolutePath}")
+            return targetFile
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return null
+        } finally {
+            bitmap?.recycle()
+            fos?.close()
+        }
+    }
+
 
     suspend fun launchLoadSequence() {
         val urls = listOf(
@@ -263,7 +305,18 @@ class SecondFragment : Fragment() {
     }
 
     private fun setWallpaper(imagePath: String) {
+
         val tag = "WallpaperService"
+
+
+        createBlackPngInExternalFiles(
+            context = requireContext(),
+            width = 1080,
+            height = 1080,
+            fileName = "black_image.png"
+        )
+
+
 
         try {
             val file = File(imagePath)
