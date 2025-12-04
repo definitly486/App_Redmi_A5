@@ -143,7 +143,8 @@ fun Context.savePackagesToFile(filename: String): Boolean {
         "com.sprd.engineermode",
         "com.android.overlay.gmscontactprovider",
         "com.android.overlay.gmssettingprovider",
-        "com.google.android.overlay.modules.permissioncontroller"
+        "com.google.android.overlay.modules.permissioncontroller",
+        "com.android.dreams.basic"
     ).joinToString("\n")
 
     val downloadFolder = this.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
