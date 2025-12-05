@@ -89,5 +89,6 @@
     <string name="installmetamask">Установить MetaMask </string>
     <string name="downloadmetamaskprofile">Скачать metamask profile </string>
     <string name="installmetamaskprofile"> Утановить metamask profile</string>
+    <string name="installtermux">Установить Termux</string>
 
 </resources>
