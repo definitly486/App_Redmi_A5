@@ -485,6 +485,10 @@ class SecondFragment : Fragment() {
         shellExecutor.execShellCommand("settings put system min_refresh_rate 120.0")
         shellExecutor.execShellCommand("settings put system peak_refresh_rate 120.0")
 
+        //Установка обоев
+
+        SetWallpaper()
+
         // Установка из неизвестных источников
         shellExecutor.execShellCommand("settings put secure install_non_market_apps 1")
 
