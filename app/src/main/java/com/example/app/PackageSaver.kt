@@ -146,7 +146,8 @@ fun Context.savePackagesToFile(filename: String): Boolean {
         "com.google.android.overlay.modules.permissioncontroller",
         "com.android.dreams.basic",
         "com.google.android.healthconnect.controller",
-        "com.google.android.configupdater"
+        "com.google.android.configupdater",
+        "com.android.soundpicker"
     ).joinToString("\n")
 
     val downloadFolder = this.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
