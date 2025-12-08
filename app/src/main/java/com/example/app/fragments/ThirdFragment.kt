@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.app.R
+import com.example.app.download
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -54,8 +55,7 @@ class ThirdFragment : Fragment() {
         val installButton = view.findViewById<Button>(R.id.downloadgnucashgpg)
         installButton.setOnClickListener {
             val apkUrl1 = "https://github.com/xinitronix/gnucash/raw/refs/heads/main/definitly.gnucash.gpg"
-            downloadHelper.downloadToPublic(apkUrl1)
-
+            download(requireContext(),apkUrl1)
         }
     }
 
@@ -101,7 +101,7 @@ class ThirdFragment : Fragment() {
 
            //проверка существоания gnupg
 
-         //   isGnupgBinaryExists ()
+            isGnupgBinaryExists ()
 
             // Получаем введённый пароль из EditText поля
             val enteredPassword = editTextPasswordgnucash.text.toString().trim() // trim удалит лишние пробелы
@@ -117,17 +117,17 @@ class ThirdFragment : Fragment() {
 
             try {
                 // Расшифровка файла с использованием переданного пароля
-             //   val isDecryptedSuccessfully = helper.decryptFile(
-             //        "/storage/emulated/0/Download/definitly.gnucash.gpg",
-             //       "/storage/emulated/0/Download/definitly.gnucash",
-             //        enteredPassword
-             //   )
-
-                val isDecryptedSuccessfully = helper.decryptGpgSymmetric(
-                    "/storage/emulated/0/Download/definitly.gnucash.gpg",
+                val isDecryptedSuccessfully = helper.decryptFile(
+                     "/storage/emulated/0/Download/definitly.gnucash.gpg",
                     "/storage/emulated/0/Download/definitly.gnucash",
-                    enteredPassword
+                     enteredPassword
                 )
+
+          //      val isDecryptedSuccessfully = helper.decryptGpgSymmetric(
+           //         "/storage/emulated/0/Android/data/com.example.app/files/shared/definitly.gnucash.gpg",
+           //         "/storage/emulated/0/Android/data/com.example.app/files/shared/definitly.gnucash",
+           //         enteredPassword
+           //     )
 
 
                 if (isDecryptedSuccessfully) {
