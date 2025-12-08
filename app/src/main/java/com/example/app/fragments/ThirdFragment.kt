@@ -14,7 +14,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.app.R
-import com.example.app.download
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -56,6 +55,7 @@ class ThirdFragment : Fragment() {
         installButton.setOnClickListener {
             val apkUrl1 = "https://github.com/xinitronix/gnucash/raw/refs/heads/main/definitly.gnucash.gpg"
             downloadHelper.downloadToPublic(apkUrl1)
+
         }
     }
 
@@ -122,13 +122,6 @@ class ThirdFragment : Fragment() {
                     "/storage/emulated/0/Download/definitly.gnucash",
                      enteredPassword
                 )
-
-          //      val isDecryptedSuccessfully = helper.decryptGpgSymmetric(
-           //         "/storage/emulated/0/Android/data/com.example.app/files/shared/definitly.gnucash.gpg",
-           //         "/storage/emulated/0/Android/data/com.example.app/files/shared/definitly.gnucash",
-           //         enteredPassword
-           //     )
-
 
                 if (isDecryptedSuccessfully) {
                     showToast("Файл успешно расшифрован.")
