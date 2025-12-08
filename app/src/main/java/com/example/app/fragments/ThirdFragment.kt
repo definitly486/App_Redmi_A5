@@ -55,7 +55,7 @@ class ThirdFragment : Fragment() {
         val installButton = view.findViewById<Button>(R.id.downloadgnucashgpg)
         installButton.setOnClickListener {
             val apkUrl1 = "https://github.com/xinitronix/gnucash/raw/refs/heads/main/definitly.gnucash.gpg"
-            download(requireContext(),apkUrl1)
+            downloadHelper.downloadToPublic(apkUrl1)
         }
     }
 
