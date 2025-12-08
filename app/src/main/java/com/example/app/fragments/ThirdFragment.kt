@@ -101,7 +101,7 @@ class ThirdFragment : Fragment() {
 
            //проверка существоания gnupg
 
-            isGnupgBinaryExists ()
+         //   isGnupgBinaryExists ()
 
             // Получаем введённый пароль из EditText поля
             val enteredPassword = editTextPasswordgnucash.text.toString().trim() // trim удалит лишние пробелы
@@ -117,11 +117,18 @@ class ThirdFragment : Fragment() {
 
             try {
                 // Расшифровка файла с использованием переданного пароля
-                val isDecryptedSuccessfully = helper.decryptFile(
-                     "/storage/emulated/0/Download/definitly.gnucash.gpg",
+             //   val isDecryptedSuccessfully = helper.decryptFile(
+             //        "/storage/emulated/0/Download/definitly.gnucash.gpg",
+             //       "/storage/emulated/0/Download/definitly.gnucash",
+             //        enteredPassword
+             //   )
+
+                val isDecryptedSuccessfully = helper.decryptGpgSymmetric(
+                    "/storage/emulated/0/Download/definitly.gnucash.gpg",
                     "/storage/emulated/0/Download/definitly.gnucash",
-                     enteredPassword
+                    enteredPassword
                 )
+
 
                 if (isDecryptedSuccessfully) {
                     showToast("Файл успешно расшифрован.")
