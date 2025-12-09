@@ -61,7 +61,8 @@ class FirstFragment : Fragment() {
             R.id.installvcore to "https://github.com/definitly486/redmia5/releases/download/apk/vcore.apk",
             R.id.installmetamask to "https://github.com/definitly486/redmia5/releases/download/apk/metamask-blockchain-wall-android3-7.60.2-metamask-main-prod-3213.apk",
             R.id.installtermux to "https://github.com/definitly486/redmia5/releases/download/apk/termux-app_v0.118.3+github-debug_arm64-v8a.apk",
-            R.id.installelektichka to "https://github.com/definitly486/Lenovo_Tab_3_7_TB3-730X/releases/download/apk/yandex_elektrichka+v.3.43.0-34300_arm64.apk"
+            R.id.installelektichka to "https://github.com/definitly486/Lenovo_Tab_3_7_TB3-730X/releases/download/apk/yandex_elektrichka+v.3.43.0-34300_arm64.apk",
+            R.id.installlibretube to "https://github.com/definitly486/redmia5/releases/download/apk/libretube-arm64-v8a-release.apk"
         )
 
         // Назначаем обработчик события каждому элементу карты

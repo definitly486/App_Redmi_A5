@@ -91,5 +91,6 @@
     <string name="installmetamaskprofile"> Утановить metamask profile</string>
     <string name="installtermux">Установить Termux</string>
     <string name="deletegmspkg">Удалить GMS</string>
+    <string name="installlibretube">Установка LibreTube </string>
 
 </resources>
