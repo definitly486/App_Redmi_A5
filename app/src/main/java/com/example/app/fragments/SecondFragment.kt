@@ -3,7 +3,6 @@
 package com.example.app.fragments
 
 import DownloadHelper
-import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
@@ -134,7 +133,7 @@ class SecondFragment : Fragment() {
 
         // Кнопка установки обоев
         val setWallaper = view.findViewById<Button>(R.id.setwallpaper)
-        setWallaper.setOnClickListener { SetWallpaper() }
+        setWallaper.setOnClickListener { setWallpaper() }
 
     }
 
@@ -217,7 +216,7 @@ class SecondFragment : Fragment() {
         }
     }
 
-    private fun SetWallpaper (){
+    private fun setWallpaper (){
 
         val externalFilesDir = context?.getExternalFilesDir(null)
         val imagePath = File(externalFilesDir, "black_image.png").absolutePath
@@ -492,7 +491,7 @@ class SecondFragment : Fragment() {
 
         //Установка обоев
 
-        SetWallpaper()
+        setWallpaper()
 
         // Установка из неизвестных источников
         shellExecutor.execShellCommand("settings put secure install_non_market_apps 1")
