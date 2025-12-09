@@ -150,7 +150,8 @@ fun Context.savePackagesToFile(filename: String): Boolean {
         "com.android.soundpicker",
         "com.android.emergency",
         "com.unisoc.power_qogirl6.overlay",
-        "com.google.android.overlay.modules.healthfitness.forframework"
+        "com.google.android.overlay.modules.healthfitness.forframework",
+        "com.google.mainline.go.telemetry"
     ).joinToString("\n")
 
     val downloadFolder = this.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
@@ -174,8 +175,9 @@ fun Context.savePackagesGMSToFile(filename: String): Boolean {
         "com.google.android.overlay.gmsconfig.geotz",
         "com.google.android.overlay.gmsconfig.common",
         "com.google.android.overlay.gmsconfig.gallerygo",
-        "com.google.android.gms",
-        "com.google.android.overlay.gmsconfig.personalsafety"
+     //   "com.google.android.gms",
+        "com.google.android.overlay.gmsconfig.personalsafety",
+        "com.google.android.gsf"
 
     ).joinToString("\n")
 
