@@ -167,3 +167,29 @@ fun Context.savePackagesToFile(filename: String): Boolean {
         false
     }
 }
+
+fun Context.savePackagesGMSToFile(filename: String): Boolean {
+    val packages = listOf(
+        "com.google.android.overlay.gmsconfig.go",
+        "com.google.android.overlay.gmsconfig.geotz",
+        "com.google.android.overlay.gmsconfig.common",
+        "com.google.android.overlay.gmsconfig.gallerygo",
+        "com.google.android.gms",
+        "com.google.android.overlay.gmsconfig.personalsafety"
+
+    ).joinToString("\n")
+
+    val downloadFolder = this.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
+    if (downloadFolder != null && !downloadFolder.exists()) {
+        downloadFolder.mkdirs()
+    }
+
+    val fullPath = "${downloadFolder?.absolutePath}/$filename"
+
+    return try {
+        FileWriter(fullPath).use { it.write(packages) }
+        true
+    } catch (_: IOException) {
+        false
+    }
+}

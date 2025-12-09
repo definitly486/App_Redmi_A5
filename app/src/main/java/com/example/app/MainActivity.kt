@@ -95,11 +95,16 @@ class MainActivity : AppCompatActivity() {
         //разрешить установку из этого приложения
 
         // Создаём файл packages.txt
-        if (savePackagesToFile("packages.txt")) {
-            Toast.makeText(this, "Файл packages.txt создан.", Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(this, "Ошибка создания файла.", Toast.LENGTH_SHORT).show()
-        }
+      //  if (savePackagesToFile("packages.txt"))
+
+        //{
+        //    Toast.makeText(this, "Файл packages.txt создан.", Toast.LENGTH_SHORT).show()
+       // } else {
+        //    Toast.makeText(this, "Ошибка создания файла.", Toast.LENGTH_SHORT).show()
+       // }
+
+        savePackagesToFile("packages.txt")
+        savePackagesGMSToFile("GMSpackages")
 
         // Настраиваем кнопки
         setupActionButtons(savedInstanceState)
