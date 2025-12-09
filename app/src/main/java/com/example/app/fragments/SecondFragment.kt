@@ -72,6 +72,11 @@ class SecondFragment : Fragment() {
         val installButton = view.findViewById<Button>(R.id.deletepkg)
         installButton.setOnClickListener { deletePkgFromFile("packages.txt") }
 
+        //кнопка удаления пакетов gms
+
+        val deletePKGGMS = view.findViewById<Button>(R.id.deletegmspkg)
+        deletePKGGMS.setOnClickListener { deletePkgFromFile("GMSpackages") }
+
         // Кнопка скачивания busybox
         val downloadbusybox = view.findViewById<Button>(R.id.downloadbusybox)
         downloadbusybox.setOnClickListener { downloadBusyBox() }
