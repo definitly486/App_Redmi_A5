@@ -151,7 +151,8 @@ fun Context.savePackagesToFile(filename: String): Boolean {
         "com.android.emergency",
         "com.unisoc.power_qogirl6.overlay",
         "com.google.android.overlay.modules.healthfitness.forframework",
-        "com.google.mainline.go.telemetry"
+        "com.google.mainline.go.telemetry",
+        "com.android.fmradio"
     ).joinToString("\n")
 
     val downloadFolder = this.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
