@@ -147,6 +147,8 @@ class FifthFragment : Fragment() {
             return
         }
 
+ //проверка существование файла org.thunderdog.challegram.tar.enc
+
 
 
         withContext(Dispatchers.IO) {

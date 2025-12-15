@@ -152,6 +152,14 @@ fun CoroutineScope.decryptWithOpenSslFormat2(context: Context, archiveName: Stri
                 dir.mkdirs()
             }
 
+            if (!File(encryptedFilePath).exists()) {  // Исправил: используем File для .exists()
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(context, "Зашифрованный файл не найден: ${File(encryptedFilePath).name}", Toast.LENGTH_LONG).show()
+                }
+                return@launch
+            }
+
+
             try {
                 // Используем FileInputStream для чтения файла по абсолютному пути
                 FileInputStream(File(encryptedFilePath)).use { input ->
@@ -204,6 +212,11 @@ fun CoroutineScope.decryptWithOpenSslFormat2(context: Context, archiveName: Stri
                         entry = tarIn.nextTarEntry
                     }
                 }
+
+                withContext(Dispatchers.Main) {
+                    copyprofile(context, archiveName)
+                }
+
             } catch (ex: Exception) {
                 ex.printStackTrace()
                 throw IOException("Ошибка при обработке файла: ${ex.message}")
@@ -212,8 +225,6 @@ fun CoroutineScope.decryptWithOpenSslFormat2(context: Context, archiveName: Stri
             println("Каталог shared не найден.")
         }
     }
-        //Функция копировая профиля.
-    copyprofile(context,archiveName)
 
 }
 
