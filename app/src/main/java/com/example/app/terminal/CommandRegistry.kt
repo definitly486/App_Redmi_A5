@@ -13,14 +13,13 @@ class CommandRegistry {
     }
 
     private fun registerDefaults() {
-
         commands["help"] = {
             """
             Available commands:
             help
             clear
             echo <text>
-            time
+            shell <command> - Run shell command
             """.trimIndent()
         }
 
@@ -28,13 +27,8 @@ class CommandRegistry {
             args.joinToString(" ")
         }
 
-        commands["time"] = {
-            SimpleDateFormat("HH:mm:ss", Locale.getDefault())
-                .format(Date())
-        }
-
         commands["clear"] = {
-            "\u000C" // спец-маркер
+            "\u000C" // спец-маркер для очистки экрана
         }
     }
 
