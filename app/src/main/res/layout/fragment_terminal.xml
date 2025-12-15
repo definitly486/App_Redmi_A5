@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:background="#000000"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     android:padding="8dp">
 
+    <!-- ScrollView с выводом, занимает всё пространство до EditText -->
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        android:layout_above="@id/input">
 
         <TextView
             android:id="@+id/output"
@@ -22,14 +21,17 @@
             android:typeface="monospace" />
     </ScrollView>
 
+    <!-- Поле ввода всегда внизу экрана -->
     <EditText
         android:id="@+id/input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:hint="> "
         android:textColor="#00FF00"
         android:textColorHint="#555555"
         android:backgroundTint="#00FF00"
         android:singleLine="true"
-        android:typeface="monospace"/>
-</LinearLayout>
+        android:typeface="monospace" />
+
+</RelativeLayout>
