@@ -33,17 +33,18 @@ class TerminalController(private val context: Context) {
             val command = input.removePrefix("su ").trim()
             executeRootCommand(command)
         } else {
-            // Execute registered commands from CommandRegistry
-            val parts = input.split(" ")
-            val command = parts.first()
-            val args = parts.drop(1)
-
-            val result = registry.execute(command, args)
-            if (result.isNotBlank()) {
-                onOutput?.invoke(result)
+            // Execute regular shell commands directly without the "shell" prefix
+            if (input.startsWith("shell ")) {
+                val command = input.removePrefix("shell ").trim()
+                executeShellCommand(command)
             } else {
-                // Otherwise, execute as a shell command
-                executeShellCommand(input)
+                // Execute registered commands from CommandRegistry
+                val parts = input.split(" ")
+                val command = parts.first()
+                val args = parts.drop(1)
+
+                val result = registry.execute(command, args)
+                onOutput?.invoke(result)
             }
         }
     }
