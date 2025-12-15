@@ -20,6 +20,7 @@ import com.example.app.fragments.SecondFragment
 import com.example.app.fragments.SeventhFragment
 import com.example.app.fragments.SixthFragment
 import com.example.app.fragments.TenthFragment
+import com.example.app.fragments.TerminalFragment
 import com.example.app.fragments.ThirdFragment
 
 class MainActivity : AppCompatActivity() {
@@ -34,11 +35,12 @@ class MainActivity : AppCompatActivity() {
         NinthFragment(),
         TenthFragment(),
         PythonFragment(),
-        KernelSuFragment()
+        KernelSuFragment(),
+        TerminalFragment()
     )
 
     private val buttonTitles = listOf(
-        "Первая", "Вторая", "Третья", "Профили", "Git Clone", "Седьмая" ,"OpenSSL Decryptor","Десятая","Python3","KernelSu"
+        "Первая", "Вторая", "Третья", "Профили", "Git Clone", "Седьмая" ,"OpenSSL Decryptor","Десятая","Python3","KernelSu","Terminal"
     )
 
     private var selectedButton: Button? = null
