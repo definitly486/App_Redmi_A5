@@ -1,10 +1,13 @@
-package com.example.app.terminal
-
+import android.content.Context
+import android.os.Environment
+import com.example.app.terminal.CommandRegistry
 import java.io.BufferedReader
 import java.io.DataOutputStream
 import java.io.InputStreamReader
+import java.io.File
+import kotlin.concurrent.thread
 
-class TerminalController {
+class TerminalController(private val context: Context) {
 
     var onOutput: ((String) -> Unit)? = null
     private val registry = CommandRegistry()
@@ -12,6 +15,12 @@ class TerminalController {
     fun printWelcome() {
         onOutput?.invoke("Android Shell Terminal v1.0")
         onOutput?.invoke("Type 'help' for available commands")
+
+        // Переход в директорию приложения (Downloads)
+        val appDirectory = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
+        appDirectory?.let {
+            onOutput?.invoke("Changing to directory: ${it.absolutePath}")
+        }
     }
 
     fun execute(input: String) {
@@ -19,7 +28,7 @@ class TerminalController {
 
         onOutput?.invoke("> $input")
 
-        // Handle shell commands
+        // Обработка команд shell и su
         if (input.startsWith("shell ")) {
             val command = input.removePrefix("shell ").trim()
             executeShellCommand(command)
@@ -27,7 +36,7 @@ class TerminalController {
             val command = input.removePrefix("su ").trim()
             executeRootCommand(command)
         } else {
-            // Handle registered commands
+            // Обработка зарегистрированных команд
             val parts = input.split(" ")
             val command = parts.first()
             val args = parts.drop(1)
@@ -37,57 +46,66 @@ class TerminalController {
         }
     }
 
-    // Executes a root command using 'su'
+    // Выполнение команды с правами суперпользователя
     fun executeRootCommand(command: String) {
         if (!isRootAvailable()) {
             onOutput?.invoke("Root access is not available.")
             return
         }
 
-        try {
-            // Execute the root command via 'su'
-            val process = Runtime.getRuntime().exec("su") // Start process as root
-            val os = DataOutputStream(process.outputStream)
-            os.writeBytes("$command\n")   // Send command to be executed
-            os.writeBytes("exit\n")       // Exit after command execution
-            os.flush()
+        thread {
+            try {
+                // Запуск процесса с правами суперпользователя
+                val process = Runtime.getRuntime().exec("su")
+                val os = DataOutputStream(process.outputStream)
+                os.writeBytes("$command\n")   // Отправка команды для выполнения
+                os.writeBytes("exit\n")       // Завершаем процесс после выполнения команды
+                os.flush()
 
-            // Read the output from the command
-            val output = BufferedReader(InputStreamReader(process.inputStream)).readText()
-            val errorOutput = BufferedReader(InputStreamReader(process.errorStream)).readText()
+                // Чтение и вывод результата команды
+                val output = BufferedReader(InputStreamReader(process.inputStream)).readText()
+                val errorOutput = BufferedReader(InputStreamReader(process.errorStream)).readText()
 
-            if (output.isNotBlank()) {
-                onOutput?.invoke(output)
+                if (output.isNotBlank()) {
+                    onOutput?.invoke(output)
+                }
+                if (errorOutput.isNotBlank()) {
+                    onOutput?.invoke(errorOutput)
+                }
+
+            } catch (e: Exception) {
+                onOutput?.invoke("Error executing root command: ${e.message}")
             }
-            if (errorOutput.isNotBlank()) {
-                onOutput?.invoke(errorOutput)
-            }
-
-        } catch (e: Exception) {
-            onOutput?.invoke("Error executing root command: ${e.message}")
         }
     }
 
-    // Executes a normal shell command
+    // Выполнение обычной shell команды
     private fun executeShellCommand(command: String) {
-        try {
-            val process = Runtime.getRuntime().exec(command)
-            val output = BufferedReader(InputStreamReader(process.inputStream)).readText()
-            val errorOutput = BufferedReader(InputStreamReader(process.errorStream)).readText()
+        thread {
+            try {
+                // Получаем путь к директории приложения
+                val appDirectory = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
+                appDirectory?.let {
+                    // Запускаем команду в этой директории
+                    val process = Runtime.getRuntime().exec(arrayOf("sh", "-c", "cd ${it.absolutePath} && $command"))
 
-            if (output.isNotBlank()) {
-                onOutput?.invoke(output)
-            }
-            if (errorOutput.isNotBlank()) {
-                onOutput?.invoke(errorOutput)
-            }
+                    val output = BufferedReader(InputStreamReader(process.inputStream)).readText()
+                    val errorOutput = BufferedReader(InputStreamReader(process.errorStream)).readText()
 
-        } catch (e: Exception) {
-            onOutput?.invoke("Error executing command: ${e.message}")
+                    if (output.isNotBlank()) {
+                        onOutput?.invoke(output)
+                    }
+                    if (errorOutput.isNotBlank()) {
+                        onOutput?.invoke(errorOutput)
+                    }
+                }
+            } catch (e: Exception) {
+                onOutput?.invoke("Error executing command: ${e.message}")
+            }
         }
     }
 
-    // Check if root is available
+    // Проверка доступности прав суперпользователя
     private fun isRootAvailable(): Boolean {
         return try {
             val process = Runtime.getRuntime().exec("which su")
