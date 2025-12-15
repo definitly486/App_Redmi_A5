@@ -28,21 +28,24 @@ class TerminalController(private val context: Context) {
 
         onOutput?.invoke("> $input")
 
-        // Обработка команд shell и su
-        if (input.startsWith("shell ")) {
-            val command = input.removePrefix("shell ").trim()
-            executeShellCommand(command)
-        } else if (input.startsWith("su ")) {
+        // If input starts with 'su', it's a root command
+        if (input.startsWith("su ")) {
             val command = input.removePrefix("su ").trim()
             executeRootCommand(command)
         } else {
-            // Обработка зарегистрированных команд
-            val parts = input.split(" ")
-            val command = parts.first()
-            val args = parts.drop(1)
+            // Execute regular shell commands directly without the "shell" prefix
+            if (input.startsWith("shell ")) {
+                val command = input.removePrefix("shell ").trim()
+                executeShellCommand(command)
+            } else {
+                // Execute registered commands from CommandRegistry
+                val parts = input.split(" ")
+                val command = parts.first()
+                val args = parts.drop(1)
 
-            val result = registry.execute(command, args)
-            onOutput?.invoke(result)
+                val result = registry.execute(command, args)
+                onOutput?.invoke(result)
+            }
         }
     }
 
