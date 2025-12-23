@@ -34,7 +34,7 @@ class FirstFragment : Fragment() {
             R.id.installtermos to "https://github.com/definitly486/redmia5/releases/download/apk/Termos_v2.4_universal.apk",
             R.id.installaurora to "https://github.com/definitly486/Lenovo_TB-X304L/releases/download/apk/com.aurora.store_70.apk",
             R.id.installnewpipe to "https://github.com/definitly486/redmia5/releases/download/apk/NewPipe_nightly-1068.apk",
-            R.id.installjob to "https://github.com/definitly486/redmia5/releases/download/apk/ru.ozon.hire_141_rs.apk",
+            R.id.installjob to "https://github.com/definitly486/redmia5/releases/download/apk/ru.ozon.hire_1.72.0-gmshms-release_146.apk",
             R.id.installtc to "https://github.com/definitly486/redmia5/releases/download/apk/Total_Commander_v.3.50d.apk",
             R.id.installsberbank to "https://github.com/definitly486/redmia5/releases/download/apk/SberbankOnline.apk",
             R.id.installozonbank to "https://github.com/definitly486/redmia5/releases/download/apk/Ozon_Bank_18.35.0.apk",
@@ -64,7 +64,8 @@ class FirstFragment : Fragment() {
             R.id.installelektichka to "https://github.com/definitly486/Lenovo_Tab_3_7_TB3-730X/releases/download/apk/yandex_elektrichka+v.3.43.0-34300_arm64.apk",
             R.id.installlibretube to "https://github.com/definitly486/redmia5/releases/download/apk/libretube-arm64-v8a-release.apk",
             R.id.installmetro to "https://github.com/definitly486/redmia5/releases/download/apk/ru.mosmetro.metro_8020_rs.apk",
-            R.id.installcheck to "https://github.com/definitly486/redmia5/releases/download/apk/com.warefly.checkscan-20140554.apk"
+            R.id.installcheck to "https://github.com/definitly486/redmia5/releases/download/apk/com.warefly.checkscan-20140554.apk",
+            R.id.installmax to "https://github.com/definitly486/redmia5/releases/download/apk/ru.oneme.app_6478_rs.apk"
 
         )
 

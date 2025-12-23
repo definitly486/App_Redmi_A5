@@ -94,5 +94,6 @@
     <string name="installlibretube">Установка LibreTube </string>
     <string name="installmetro">Установка Метро </string>
     <string name="installcheck">Установить Чекскан </string>
+    <string name="installmax">Установить мессенджер MAX </string>
 
 </resources>

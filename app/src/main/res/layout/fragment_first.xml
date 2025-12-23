@@ -95,6 +95,18 @@
                 style="@style/Widget.MaterialComponents.Button" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/installmax"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installmax"
+                app:icon="@drawable/ic_max"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/installmetro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
