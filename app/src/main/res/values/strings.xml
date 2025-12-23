@@ -95,5 +95,7 @@
     <string name="installmetro">Установка Метро </string>
     <string name="installcheck">Установить Чекскан </string>
     <string name="installmax">Установить мессенджер MAX </string>
+    <string name="downloadmaxrofile">Скачать MAX PROFILE </string>
+    <string name="installmaxprofile">Установить MAX PROFILE </string>
 
 </resources>

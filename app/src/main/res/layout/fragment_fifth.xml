@@ -126,6 +126,30 @@
                 android:backgroundTint="?attr/colorPrimary"
                 style="@style/Widget.MaterialComponents.Button" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/downloadmaxrofile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/downloadmaxrofile"
+                app:icon="@drawable/ic_max"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installmaxprofile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installmaxprofile"
+                app:icon="@drawable/ic_max"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
 
 
             <Button

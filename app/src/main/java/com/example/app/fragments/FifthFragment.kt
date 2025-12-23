@@ -29,6 +29,7 @@ class FifthFragment : Fragment() {
     private lateinit var downloadK9Mail: View
     private lateinit var downloadAuth: View
     private lateinit var downloadMetamask: View
+    private lateinit var downloadMax: View
 
     // Кнопки установки
     private lateinit var installPluma: View
@@ -36,6 +37,7 @@ class FifthFragment : Fragment() {
     private lateinit var installK9Mail: View
     private lateinit var installAuth: View
     private lateinit var installMetamask: View
+    private lateinit var installMax: View
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -51,6 +53,7 @@ class FifthFragment : Fragment() {
         downloadK9Mail = view.findViewById(R.id.downloadk9mailprofile)
         downloadAuth = view.findViewById(R.id.downloadgoogleauth)
         downloadMetamask = view.findViewById(R.id.downloadmetamaskprofile)
+        downloadMax = view.findViewById(R.id.downloadmaxrofile)
 
         // Установка
         installPluma = view.findViewById(R.id.installplumaprofile)
@@ -58,6 +61,7 @@ class FifthFragment : Fragment() {
         installK9Mail = view.findViewById(R.id.installk9mailprofile)
         installAuth = view.findViewById(R.id.installgoogleauth)
         installMetamask = view.findViewById(R.id.installmetamskprofile) // Исправлена опечатка!
+        installMax = view.findViewById(R.id.installmaxprofile)
 
         // Обработчики скачивания
         downloadPluma.setOnClickListener { downloadProfile("com.qflair.browserq.tar.enc") }
@@ -65,13 +69,14 @@ class FifthFragment : Fragment() {
         downloadK9Mail.setOnClickListener { downloadProfile("com.fsck.k9.tar.enc") }
         downloadAuth.setOnClickListener { downloadProfile("com.google.android.apps.authenticator2.tar.enc") }
         downloadMetamask.setOnClickListener { downloadProfile("io.metamask.tar.enc") }
-
+        downloadMax.setOnClickListener { downloadProfile("ru.oneme.app.tar.enc") }
         // Обработчики установки
         installPluma.setOnClickListener { launchInstall("com.qflair.browserq") }
         installTelegram.setOnClickListener { launchInstall("org.thunderdog.challegram") }
         installK9Mail.setOnClickListener { launchInstall("com.fsck.k9") }
         installAuth.setOnClickListener { launchInstall("com.google.android.apps.authenticator2") }
         installMetamask.setOnClickListener { launchInstall("io.metamask") }
+        installMax.setOnClickListener { launchInstall("ru.oneme.app") }
 
         return view
     }
