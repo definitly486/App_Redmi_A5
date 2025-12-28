@@ -282,6 +282,7 @@ class SecondFragment : Fragment() {
             val result = downloadSingleAPK(url)
             handleResult(result, index + 1)
         }
+        ApkAutoInstaller.installAutoAPK(context)
     }
 
     suspend fun downloadSingleAPK(url: String): File? {

@@ -66,8 +66,8 @@ class DownloadHelper(private val context: Context) {
             destinationDir = appApkDir(),
             subDirName = "APK",
             expectedExtension = "apk",
-            onExists = { file, name -> installApk(file, name, useApkFolder = true) },
-            onSuccess = { file, name -> installApk(file, name, useApkFolder = true) },
+            onExists = { _, _ -> },
+            onSuccess = { _, _ -> },
             onComplete = onComplete
         )
     }
