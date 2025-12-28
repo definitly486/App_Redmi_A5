@@ -87,13 +87,6 @@ class KernelSuFragment : Fragment() {
             }.start()
         }
 
-        // Кнопка скачивания APatch-KSU.zip
-        view.findViewById<Button>(R.id.downloadksuzip).setOnClickListener {
-            downloadHelper.downloadToPublic(
-                "https://github.com/definitly486/redmia5/releases/download/root/APatch-KSU.zip"
-            )
-            Toast.makeText(requireContext(), "Скачивание APatch-KSU.zip начато…", Toast.LENGTH_SHORT).show()
-        }
 
         //Кнопка распаковки и установки KernelSU
         view.findViewById<Button>(R.id.install_kermelsu).setOnClickListener {
