@@ -109,11 +109,22 @@ private fun runGitCommand(command: String): String? = try {
 tasks.register("checkAssets") {
     doLast {
         val assetsDir = File("$projectDir/src/main/assets")
-        val fileName = "KernelSU_v1.0.5_12081-release.apk"
-        val file = File(assetsDir, fileName)
 
-        if (!file.exists()) {
-            throw GradleException("ERROR: Missing asset file: $fileName\nПоложи его в src/main/assets/")
+        val requiredFiles = listOf(
+            "KernelSU_v1.0.5_12081-release.apk",
+            "APatch-KSU.zip"
+        )
+
+        val missingFiles = requiredFiles.filter { fileName ->
+            !File(assetsDir, fileName).exists()
+        }
+
+        if (missingFiles.isNotEmpty()) {
+            throw GradleException(
+                "ERROR: Missing asset files:\n" +
+                        missingFiles.joinToString("\n") { " - $it" } +
+                        "\n\nПоложи их в src/main/assets/"
+            )
         }
     }
 }

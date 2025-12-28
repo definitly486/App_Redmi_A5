@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Environment
 import android.util.Log
+import android.widget.Toast
+import com.example.app.fragments.RootChecker
 import java.io.File
 
 object ApkAutoInstaller {
@@ -11,6 +13,24 @@ object ApkAutoInstaller {
     private val LOG_TAG = "InstallAutoAPK"
 
     fun installAutoAPK(context: Context?) {
+
+
+
+
+        if (context == null) {
+            Log.e(LOG_TAG, "Context is null → автоустановка отменена")
+            return
+        }
+
+        if (!RootChecker.hasRootAccess(context)) {
+            Toast.makeText(
+                context,
+                "Root-доступ отсутствует. Aвтоустановка отменена.",
+                Toast.LENGTH_LONG
+            ).show()
+            return
+        }
+
         if (context == null) {
             Log.e(LOG_TAG, "Context is null → автоустановка отменена")
             return

@@ -4,9 +4,12 @@ package com.example.app.fragments
 
 import DownloadHelper
 import android.app.AlertDialog
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -48,6 +51,8 @@ class KernelSuFragment : Fragment() {
             Toast.makeText(requireContext(), "Установка APatch-KSU…", Toast.LENGTH_LONG).show()
 
             Thread {
+
+                extractAndGetAPatch(requireContext())
                 val success = KernelSUInstaller.installAPatchKSU()
 
                 activity?.runOnUiThread {
@@ -153,4 +158,41 @@ class KernelSuFragment : Fragment() {
             null
         }
     }
+
+    private fun extractAndGetAPatch(context: Context): Uri? {
+        val fileName = "APatch-KSU.zip"
+
+        return try {
+            val contentValues = ContentValues().apply {
+                put(MediaStore.Downloads.DISPLAY_NAME, fileName)
+                put(MediaStore.Downloads.MIME_TYPE, "application/zip")
+                put(MediaStore.Downloads.IS_PENDING, 1)
+            }
+
+            val resolver = context.contentResolver
+            val uri = resolver.insert(
+                MediaStore.Downloads.EXTERNAL_CONTENT_URI,
+                contentValues
+            ) ?: return null
+
+            resolver.openOutputStream(uri)?.use { output ->
+                context.assets.open(fileName).use { input ->
+                    input.copyTo(output)
+                }
+            }
+
+            contentValues.clear()
+            contentValues.put(MediaStore.Downloads.IS_PENDING, 0)
+            resolver.update(uri, contentValues, null, null)
+
+            Log.i(TAG, "APatch-KSU.zip сохранён в Download")
+            uri
+
+        } catch (e: Exception) {
+            Log.e(TAG, "Ошибка при сохранении в Download", e)
+            null
+        }
+    }
+
+
 }

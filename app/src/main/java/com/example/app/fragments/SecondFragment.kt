@@ -282,7 +282,7 @@ class SecondFragment : Fragment() {
             val result = downloadSingleAPK(url)
             handleResult(result, index + 1)
         }
-        ApkAutoInstaller.installAutoAPK(context)
+
     }
 
     suspend fun downloadSingleAPK(url: String): File? {
@@ -398,11 +398,13 @@ class SecondFragment : Fragment() {
             "Core+Music+Player_1.0.apk"
         )
 
+
         for (url in urls) {
             context?.getExternalFilesDir("APK")?.also { it.mkdirs() }
 
             downloadHelper.installApkFromApkFolder(url)
         }
+
     }
 
     private fun setSettings() {
