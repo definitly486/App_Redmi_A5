@@ -282,7 +282,8 @@ class SecondFragment : Fragment() {
             val result = downloadSingleAPK(url)
             handleResult(result, index + 1)
         }
-
+        Log.d("DownloadSequence", "Все файлы успешно обработаны!")
+        ApkAutoInstaller.installAutoAPK(context)
     }
 
     suspend fun downloadSingleAPK(url: String): File? {

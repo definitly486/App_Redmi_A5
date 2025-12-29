@@ -45,7 +45,7 @@
     <string name="installgoogleauth">Установить Google Authenticator </string>
     <string name="installyandexmap">Установить Yandex Map  </string>
     <string name="installfdroid">Установить  F Droid </string>
-    <string name="downloadapk">Скачать APK </string>
+    <string name="downloadapk">Скачать и установить APK </string>
     <string name="setsettings">Установить настройки</string>
     <string name="installapk">Установить APK </string>
     <string name="download_gate">Скачать Gate </string>

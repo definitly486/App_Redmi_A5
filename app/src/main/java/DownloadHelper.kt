@@ -66,11 +66,21 @@ class DownloadHelper(private val context: Context) {
             destinationDir = appApkDir(),
             subDirName = "APK",
             expectedExtension = "apk",
-            onExists = { _, _ -> },
-            onSuccess = { _, _ -> },
-            onComplete = onComplete
+            onExists = { file, _ ->
+                Log.d("DownloadHelper", "Файл уже существует: ${file?.name}")
+                onComplete?.invoke(file)
+            },
+            onSuccess = { file, _ ->
+                Log.d("DownloadHelper", "Файл успешно загружен: ${file?.name}")
+                onComplete?.invoke(file)
+            },
+
+            onComplete = {
+                Log.d("DownloadHelper", "downloadFile завершен")
+            }
         )
     }
+
 
     /** Произвольный файл (без установки) */
     fun downloadFileSimple(url: String, onComplete: ((File?) -> Unit)? = null) {
