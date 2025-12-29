@@ -105,10 +105,6 @@ class SecondFragment : Fragment() {
         val downloadapk = view.findViewById<Button>(R.id.downloadapk)
         downloadapk.setOnClickListener { downloadAPK() }
 
-        // Кнопка установки  APK
-        val installapk = view.findViewById<Button>(R.id.installapk)
-        installapk.setOnClickListener { installAPK() }
-
         // Кнопка установки настроек
         val setting = view.findViewById<Button>(R.id.setsettings)
         setting.setOnClickListener { setSettings() }
@@ -126,11 +122,6 @@ class SecondFragment : Fragment() {
         //Кнопка удаления main.tar.gz и main folder
         val deleteMain = view.findViewById<Button>(R.id.deletemain)
         deleteMain.setOnClickListener {  deleteMAIN(requireContext()) }
-
-        //Кнопка автоматической установке apk
-
-        val installAutoApk = view.findViewById<Button>(R.id.installautoapk)
-        installAutoApk .setOnClickListener { ApkAutoInstaller.installAutoAPK(context) }
 
         // Кнопка установки обоев
         val setWallaper = view.findViewById<Button>(R.id.setwallpaper)

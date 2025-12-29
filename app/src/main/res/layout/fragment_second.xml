@@ -210,32 +210,6 @@
             style="@style/Widget.MaterialComponents.Button"
             tools:ignore="VisualLintButtonSize" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/installautoapk"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/installautoapk"
-            app:icon="@drawable/ic_download"
-            app:iconGravity="start"
-            app:iconPadding="12dp"
-            app:iconTint="@null"
-            android:backgroundTint="?attr/colorPrimary"
-            style="@style/Widget.MaterialComponents.Button"
-            tools:ignore="VisualLintButtonSize" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/installapk"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="?attr/colorPrimary"
-            android:text="@string/installapk"
-            app:icon="@drawable/ic_install"
-            app:iconGravity="start"
-            app:iconPadding="12dp"
-            app:iconTint="@null"
-            tools:ignore="TouchTargetSizeCheck,VisualLintButtonSize" />
-
-           </LinearLayout>
+    </LinearLayout>
     </ScrollView>
 </FrameLayout>
