@@ -97,5 +97,8 @@
     <string name="installmax">Установить мессенджер MAX </string>
     <string name="downloadmaxrofile">Скачать MAX PROFILE </string>
     <string name="installmaxprofile">Установить MAX PROFILE </string>
+    <string name="downloadmynalogprofile">Скачать Мои налог profile </string>
+    <string name="installmynalogprofile">Установить Мои налог profile </string>
+    <string name="installmynalog">Установить Мои налог </string>
 
 </resources>

@@ -19,16 +19,17 @@
             tools:context=".MainActivity"
             tools:ignore="UselessParent">
 
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Введите пароль"
-        app:layout_constraintBottom_toTopOf="@+id/downloadplumaprofile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Введите пароль"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toTopOf="@+id/downloadplumaprofile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.526"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/downloadplumaprofile"
@@ -125,6 +126,32 @@
                 app:iconTint="@null"
                 android:backgroundTint="?attr/colorPrimary"
                 style="@style/Widget.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/downloadmynalogrofile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/downloadmynalogprofile"
+                app:icon="@drawable/ic_mynalog"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/installmynalogprofile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installmynalogprofile"
+                app:icon="@drawable/ic_mynalog"
+                app:iconGravity="start"
+                app:iconPadding="12dp"
+                app:iconTint="@null"
+                android:backgroundTint="?attr/colorPrimary"
+                style="@style/Widget.MaterialComponents.Button" />
+
+
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/downloadmaxrofile"

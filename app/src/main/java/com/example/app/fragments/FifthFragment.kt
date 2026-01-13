@@ -30,6 +30,7 @@ class FifthFragment : Fragment() {
     private lateinit var downloadAuth: View
     private lateinit var downloadMetamask: View
     private lateinit var downloadMax: View
+    private lateinit var downloadMynalog: View
 
     // Кнопки установки
     private lateinit var installPluma: View
@@ -38,6 +39,7 @@ class FifthFragment : Fragment() {
     private lateinit var installAuth: View
     private lateinit var installMetamask: View
     private lateinit var installMax: View
+    private lateinit var installMynalog: View
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -54,6 +56,7 @@ class FifthFragment : Fragment() {
         downloadAuth = view.findViewById(R.id.downloadgoogleauth)
         downloadMetamask = view.findViewById(R.id.downloadmetamaskprofile)
         downloadMax = view.findViewById(R.id.downloadmaxrofile)
+        downloadMynalog = view.findViewById(R.id.downloadmynalogrofile)
 
         // Установка
         installPluma = view.findViewById(R.id.installplumaprofile)
@@ -62,6 +65,7 @@ class FifthFragment : Fragment() {
         installAuth = view.findViewById(R.id.installgoogleauth)
         installMetamask = view.findViewById(R.id.installmetamskprofile) // Исправлена опечатка!
         installMax = view.findViewById(R.id.installmaxprofile)
+        installMynalog = view.findViewById(R.id.installmynalogprofile)
 
         // Обработчики скачивания
         downloadPluma.setOnClickListener { downloadProfile("com.qflair.browserq.tar.enc") }
@@ -70,6 +74,7 @@ class FifthFragment : Fragment() {
         downloadAuth.setOnClickListener { downloadProfile("com.google.android.apps.authenticator2.tar.enc") }
         downloadMetamask.setOnClickListener { downloadProfile("io.metamask.tar.enc") }
         downloadMax.setOnClickListener { downloadProfile("ru.oneme.app.tar.enc") }
+        downloadMynalog.setOnClickListener { downloadProfile("com.gnivts.selfemployed.tar.enc") }
         // Обработчики установки
         installPluma.setOnClickListener { launchInstall("com.qflair.browserq") }
         installTelegram.setOnClickListener { launchInstall("org.thunderdog.challegram") }
@@ -77,7 +82,7 @@ class FifthFragment : Fragment() {
         installAuth.setOnClickListener { launchInstall("com.google.android.apps.authenticator2") }
         installMetamask.setOnClickListener { launchInstall("io.metamask") }
         installMax.setOnClickListener { launchInstall("ru.oneme.app") }
-
+        installMynalog.setOnClickListener { launchInstall("com.gnivts.selfemployed") }
         return view
     }
 
