@@ -66,8 +66,8 @@ class FirstFragment : Fragment() {
             R.id.installmetro to "https://github.com/definitly486/redmia5/releases/download/apk/ru.mosmetro.metro_8020_rs.apk",
             R.id.installcheck to "https://github.com/definitly486/redmia5/releases/download/apk/com.warefly.checkscan-20140554.apk",
             R.id.installmax to "https://github.com/definitly486/redmia5/releases/download/apk/ru.oneme.app_6478_rs.apk",
-            R.id.installmynalog to "https://github.com/definitly486/redmia5/releases/download/apk/mynalog.apk"
-
+            R.id.installmynalog to "https://github.com/definitly486/redmia5/releases/download/apk/mynalog.apk",
+            R.id.installmegafon to "https://github.com/definitly486/redmia5/releases/download/apk/MegaFon.apk"
         )
 
         // Назначаем обработчик события каждому элементу карты
