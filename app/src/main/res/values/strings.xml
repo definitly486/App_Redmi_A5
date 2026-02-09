@@ -101,5 +101,6 @@
     <string name="installmynalogprofile">Установить Мои налог profile </string>
     <string name="installmynalog">Установить Мои налог </string>
     <string name="installmegafon">Установить Мегафон </string>
+    <string name="installrustore">Установить RuStore </string>
 
 </resources>
