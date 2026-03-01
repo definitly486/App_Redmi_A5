@@ -102,5 +102,6 @@
     <string name="installmynalog">Установить Мои налог </string>
     <string name="installmegafon">Установить Мегафон </string>
     <string name="installrustore">Установить RuStore </string>
+    <string name="installpsb">Установить ПСБ-Банк </string>
 
 </resources>

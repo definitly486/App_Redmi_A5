@@ -10,5 +10,5 @@ if ! [  -f "APatch-KSU.zip" ]; then
 fi
 
 if ! [  -f "KernelSU_v1.0.5_12081-release.apk" ]; then
-    curl -L -k  -o   APatch_11107_11107-release-signed.apk  https://github.com/definitly486/redmia5/releases/download/apk/KernelSU_v1.0.5_12081-release.apk
+    curl -L -k  -o  KernelSU_v1.0.5_12081-release.apk  https://github.com/definitly486/redmia5/releases/download/apk/KernelSU_v1.0.5_12081-release.apk
 fi
