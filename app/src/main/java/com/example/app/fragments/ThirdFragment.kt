@@ -41,6 +41,7 @@ class ThirdFragment : Fragment() {
         editTextPasswordgnucash = view.findViewById(R.id.editTextPasswordgnucash)
         setupInstallButton(view)
         setupDownloadNoteButton(view)
+        setupDownloadToxButton(view)
         setupGitCloneButton(view)
         setupCopyCloneButton(view)
         decryptGnucasgpgpButton(view)
@@ -149,6 +150,15 @@ class ThirdFragment : Fragment() {
             downloadHelper.downloadToPublic(apkUrl1)
         }
     }
+
+    private fun setupDownloadToxButton(view: View) {
+        val downloadtox = view.findViewById<Button>(R.id.downloadtoxenc)
+        downloadtox.setOnClickListener {
+            val apkUrl1 = "https://github.com/definitly486/definitly486/releases/download/tox/profile.tox.enc"
+            downloadHelper.downloadToPublic(apkUrl1)
+        }
+    }
+
 
     private fun setupGitCloneButton(view: View) {
         val gitCloneButton = view.findViewById<Button>(R.id.gitclonedcim)
