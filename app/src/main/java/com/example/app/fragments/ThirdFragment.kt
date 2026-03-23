@@ -61,10 +61,10 @@ class ThirdFragment : Fragment() {
 
     private fun deletedefinitlygnucahButton(view:View) {
 
-       val deleteDefinitlygnucahButton = view.findViewById<Button>(R.id.deletegnucashgpg)
+        val deleteDefinitlygnucahButton = view.findViewById<Button>(R.id.deletegnucashgpg)
         deleteDefinitlygnucahButton.setOnClickListener {
 
-          val downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+            val downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
 
 // Определяем файлы для удаления
             val firstFile = downloadsDir.resolve("definitly.gnucash")
@@ -99,9 +99,9 @@ class ThirdFragment : Fragment() {
 
         installButton.setOnClickListener { _ ->
 
-           //проверка существоания gnupg
+            //проверка существоания gnupg
 
-         //   isGnupgBinaryExists ()
+            //   isGnupgBinaryExists ()
 
             // Получаем введённый пароль из EditText поля
             val enteredPassword = editTextPasswordgnucash.text.toString().trim() // trim удалит лишние пробелы
@@ -117,11 +117,11 @@ class ThirdFragment : Fragment() {
 
             try {
                 // Расшифровка файла с использованием переданного пароля
-             //   val isDecryptedSuccessfully = helper.decryptFile(
-             //        "/storage/emulated/0/Download/definitly.gnucash.gpg",
-             //       "/storage/emulated/0/Download/definitly.gnucash",
-             //        enteredPassword
-             //   )
+                //   val isDecryptedSuccessfully = helper.decryptFile(
+                //        "/storage/emulated/0/Download/definitly.gnucash.gpg",
+                //       "/storage/emulated/0/Download/definitly.gnucash",
+                //        enteredPassword
+                //   )
 
                 val isDecryptedSuccessfully = helper.decryptGpgSymmetric(
                     "/storage/emulated/0/Download/definitly.gnucash.gpg",
@@ -296,28 +296,28 @@ class ThirdFragment : Fragment() {
     }
 
 
-fun isGnupgBinaryExists(): Boolean {
-    val gnupgPath = "/system/bin/gpg"
-    val file = File(gnupgPath)
+    fun isGnupgBinaryExists(): Boolean {
+        val gnupgPath = "/system/bin/gpg"
+        val file = File(gnupgPath)
 
-    return when {
-        !file.exists() -> {
-            showToast("Файл $gnupgPath не существует")
-            false
-        }
-        !file.isFile -> {
-            showToast("$gnupgPath существует, но это не обычный файл")
-            false
-        }
-        !file.canExecute() -> {
-            showToast("$gnupgPath существует, но не имеет права на выполнение")
-            true // всё равно возвращаем true — сам бинарник присутствует
-        }
-        else -> {
-               showToast("GnuPG бинарник найден и готов к использованию: $gnupgPath")
-            true
+        return when {
+            !file.exists() -> {
+                showToast("Файл $gnupgPath не существует")
+                false
+            }
+            !file.isFile -> {
+                showToast("$gnupgPath существует, но это не обычный файл")
+                false
+            }
+            !file.canExecute() -> {
+                showToast("$gnupgPath существует, но не имеет права на выполнение")
+                true // всё равно возвращаем true — сам бинарник присутствует
+            }
+            else -> {
+                showToast("GnuPG бинарник найден и готов к использованию: $gnupgPath")
+                true
+            }
         }
     }
-}
 
 }
