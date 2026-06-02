@@ -103,5 +103,6 @@
     <string name="installmegafon">Установить Мегафон </string>
     <string name="installrustore">Установить RuStore </string>
     <string name="installpsb">Установить ПСБ-Банк </string>
+    <string name="installamnezia" >Установить AmneziaVPN </string>
 
 </resources>
