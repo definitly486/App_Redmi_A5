@@ -69,7 +69,8 @@ class FirstFragment : Fragment() {
             R.id.installmynalog to "https://github.com/definitly486/redmia5/releases/download/apk/mynalog.apk",
             R.id.installmegafon to "https://github.com/definitly486/redmia5/releases/download/apk/MegaFon.apk",
             R.id.installrustore to "https://github.com/definitly486/redmia5/releases/download/apk/RuStore-1092007-1.92.0.7.apk",
-            R.id.installpsb to "https://github.com/definitly486/redmia5/releases/download/apk/psbmobile.apk"
+            R.id.installpsb to "https://github.com/definitly486/redmia5/releases/download/apk/psbmobile.apk",
+            R.id.installamnezia to "https://github.com/definitly486/redmia5/releases/download/apk/AmneziaVPN_4.8.15.4_android9+_arm64-v8a.apk"
         )
 
         // Назначаем обработчик события каждому элементу карты
