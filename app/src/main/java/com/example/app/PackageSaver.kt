@@ -109,8 +109,6 @@ fun Context.savePackagesToFile(filename: String): Boolean {
         "com.google.android.health.connect.backuprestore",
         "com.android.microdroid.empty_payload",
         "com.android.settings.intelligence",
-        "com.google.android.overlay.devicelockcontroller",
-        "com.google.android.devicelockcontroller",
         "com.android.wallpaper",
         "com.android.wallpapercropper",
         "com.android.overlay.wallpaperconfig",
@@ -151,8 +149,7 @@ fun Context.savePackagesToFile(filename: String): Boolean {
         "com.android.emergency",
         "com.unisoc.power_qogirl6.overlay",
         "com.google.android.overlay.modules.healthfitness.forframework",
-        "com.google.mainline.go.telemetry",
-        "com.android.fmradio"
+        "com.google.mainline.go.telemetry"
 
     ).joinToString("\n")
 
